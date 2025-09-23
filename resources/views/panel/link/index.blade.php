@@ -15,22 +15,27 @@ Div: container-xxl flex-grow-1 container-p-y
     </h4>
 
     <div class="card">
-        <h5 class="card-header heading-color"></h5>
+        <h5 class="card-header heading-color">جدول لینک های کوتاه شده</h5>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover table-striped">
                 <thead class="table-dark">
                     <tr>
+                        <th>#</th>
                         <th>عنوان</th>
                         <th>لینک اصلی</th>
                         <th>لینک کوتاه</th>
                         <th>تعداد بازدید</th>
+                        <th> تاریخ ایجاد </th>
                         <th>وضعیت</th>
                         <th>عمل‌ها</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     <tr>
-                        <td><i class="align-middle fab fa-angular fa-lg text-danger me-3"></i> <strong>پروژه انگولار</strong>
+                        <td><i class="align-middle fab fa-angular fa-lg text-danger "></i> <strong>1 </strong>
+                        </td>
+                        <td><i class="align-middle fab fa-angular fa-lg text-danger me-3"></i> <strong>پروژه
+                                انگولار</strong>
                         </td>
                         <td>استیو جابز</td>
                         <td>
@@ -45,6 +50,7 @@ Div: container-xxl flex-grow-1 container-p-y
                             </ul>
                         </td>
                         <td><span class="badge bg-label-primary me-1">15</span></td>
+                        <td><span class="badge bg-label-primary me-1">14 شهریور 1404</span></td>
                         <td><span class="badge bg-label-primary me-1">فعال</span></td>
                         <td>
                             <div class="dropdown">
