@@ -12,7 +12,8 @@
     <meta name="description" content="">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('/panel/img/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('/panel/img/logo/icon.ico') }}">
+    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('/panel/img/favicon/favicon.ico') }}"> --}}
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('/panel/vendor/fonts/boxicons.css') }}">
