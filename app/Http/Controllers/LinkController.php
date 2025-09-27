@@ -13,16 +13,16 @@ class LinkController extends Controller
      */
     public function index()
     {
-        // return view('panel.sample.blank');
-        return view('panel.link.index');
+        $allLinks = link::all();
+        return view('panel.link.index', compact('allLinks'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($request)
     {
-        //
+        ds($request);
     }
 
     /**

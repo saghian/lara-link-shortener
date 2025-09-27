@@ -1,3 +1,5 @@
+<p align="center"><a href="#" target="_blank"><img src="https://raw.githubusercontent.com/saghian/lara-link-shortener/refs/heads/main/public/panel/img/logo/logo.jpg" width="400" alt="Laravel Shortener Link"></a></p>
+
 # Link Shortener Project 🔗
 
 Hey there! Welcome to my link shortener project.

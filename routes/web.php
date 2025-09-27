@@ -13,10 +13,15 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('/console')->group(function () {
+    // Test Route
     Route::get('/', function () {
         // return view('dashboard.dashboard');
         return view('panel.posts.index');
     })->name('console.index');
+
+    Route::get('/link-edit', function () {
+        return view('panel.link.edit');
+    });
 
     Route::resource('link', LinkController::class);
 });

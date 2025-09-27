@@ -2,11 +2,11 @@
     <div class="app-brand demo">
         <a href="{{ route('console.index') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="{{ asset('/panel/img/logo/icon2.png') }}" width="25px">
+                <img src="{{ asset('/panel/img/logo/icon.png') }}" width="30px">
             </span>
             {{-- <span class="app-brand-text demo menu-text fw-bold ms-2">وبلاگ</span> --}}
             <img class="app-brand-text demo menu-text fw-bold ms-2" src="{{ asset('/panel/img/logo/logo.png') }}"
-                width="100x">
+                width="150x">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
