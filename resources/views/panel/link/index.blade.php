@@ -53,7 +53,17 @@ Div: container-xxl flex-grow-1 container-p-y
             </div>
         </div>
 
-
+        <div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover table-striped" style="margin-bottom: 20px">
                 <thead class="table-dark">
@@ -137,8 +147,7 @@ Div: container-xxl flex-grow-1 container-p-y
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
-                <form action="Route('link.create')" method="POST" class="add-new-user pt-0" id="addNewUserForm"
-                    onsubmit="return false">
+                <form action="{{ route('link.store') }}" method="POST" class="add-new-user pt-0" id="addNewUserForm">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-link-title">عنوان </label>
@@ -158,13 +167,13 @@ Div: container-xxl flex-grow-1 container-p-y
 
                     <div class="mb-4">
                         <label class="form-label" for="user-plan">وضعیت </label>
-                        <select id="user-plan" class="form-select">
-                            <option value="basic">فعال</option>
-                            <option value="enterprise">غیرفعال</option>
+                        <select id="user-plan" class="form-select" name="isActive">
+                            <option value="1">فعال</option>
+                            <option value="0">غیرفعال</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">ثبت</button>
-                    <input type="submit" value="1213">
+                    {{-- <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">ثبت</button> --}}
+                    <input type="submit" value="ثبت" class="btn btn-primary me-sm-3 me-1 data-submit">
                     <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">انصراف</button>
                 </form>
             </div>

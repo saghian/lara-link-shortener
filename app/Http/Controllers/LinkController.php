@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\link;
-use App\Http\Requests\StorelinkRequest;
-use App\Http\Requests\UpdatelinkRequest;
+use App\Models\Link;
+use Illuminate\Http\Request;
 
 class LinkController extends Controller
 {
@@ -13,6 +12,7 @@ class LinkController extends Controller
      */
     public function index()
     {
+
         $allLinks = link::all();
         return view('panel.link.index', compact('allLinks'));
     }
@@ -20,23 +20,42 @@ class LinkController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($request)
-    {
-        ds($request);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorelinkRequest $request)
+    public function create()
     {
         //
     }
 
     /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // dd($request);
+        $validated = $request->validate([
+            'linkTitle' => 'required|string|max:255',
+            'mainLink' => 'required',
+            'shortLink' => 'required|string|unique:links,short_link',
+            'isActive' => 'boolean'
+        ]);
+
+        $linkData = [
+            'title' => $validated['linkTitle'],
+            'main_link' => $validated['mainLink'],
+            'short_link' => $validated['shortLink'],
+            'is_active' => $validated['isActive'] ?? false,
+            'view' => '0'
+        ];
+
+        $link = Link::create($linkData);
+
+        return redirect()->route('link.index')
+            ->with('success', 'لینک با موفقیت ایجاد شد');
+    }
+
+    /**
      * Display the specified resource.
      */
-    public function show(link $link)
+    public function show(Link $link)
     {
         //
     }
@@ -44,7 +63,7 @@ class LinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(link $link)
+    public function edit(Link $link)
     {
         //
     }
@@ -52,7 +71,7 @@ class LinkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatelinkRequest $request, link $link)
+    public function update(Request $request, Link $link)
     {
         //
     }
@@ -60,7 +79,7 @@ class LinkController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(link $link)
+    public function destroy(Link $link)
     {
         //
     }
