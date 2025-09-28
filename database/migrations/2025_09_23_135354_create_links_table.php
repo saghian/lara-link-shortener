@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title');
+            $table->string('main_link');
+            $table->string('short_link');
+            $table->string('view');
+            $table->boolean('is_active');
+
             $table->timestamps();
         });
     }

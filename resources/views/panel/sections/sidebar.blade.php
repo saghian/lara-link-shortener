@@ -5,8 +5,9 @@
                 <img src="{{ asset('/panel/img/logo/icon.png') }}" width="30px">
             </span>
             {{-- <span class="app-brand-text demo menu-text fw-bold ms-2">وبلاگ</span> --}}
-            <img class="app-brand-text demo menu-text fw-bold ms-2" src="{{ asset('/panel/img/logo/banner.png') }}"
-                width="100x">
+
+            <img class="app-brand-text demo menu-text fw-bold ms-2" src="{{ asset('/panel/img/logo/logo.png') }}"
+                width="150x">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
