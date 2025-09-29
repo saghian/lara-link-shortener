@@ -32,10 +32,10 @@ class LinkController extends Controller
     {
         // dd($request);
         $validated = $request->validate([
-            'linkTitle' => 'required|string|max:255',
-            'mainLink' => 'required',
-            'shortLink' => 'required|string|unique:links,short_link',
-            'isActive' => 'boolean'
+            'linkTitle' => 'required|string|max:100|min:5',
+            'mainLink' => 'required|url',
+            'shortLink' => 'required|string|alpha_dash|max:50|unique:links,short_link',
+            'isActive' => 'required'
         ]);
 
         $linkData = [

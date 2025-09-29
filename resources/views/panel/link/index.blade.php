@@ -53,7 +53,97 @@ Div: container-xxl flex-grow-1 container-p-y
             </div>
         </div>
 
-        <div>
+        <div class="card-body">
+            <div>
+                <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+                    <i class="bx bx-xs bx-store me-2"></i>
+                    این یک هشدار خطر قابل رد کردن است - بررسی کنید!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-hover table-striped" style="margin-bottom: 20px">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>عنوان</th>
+                                <th>لینک اصلی</th>
+                                <th>لینک کوتاه</th>
+                                <th style="width: 10%">تعداد بازدید</th>
+                                <th style="width: 12%"> تاریخ ایجاد </th>
+                                <th style="width: 10%">وضعیت</th>
+                                <th style="width: 10%">عمل‌ها</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach ($allLinks as $link)
+                                <tr>
+                                    <td><i class="align-middle fab fa-angular fa-lg text-danger "></i>
+                                        <strong>{{ $loop->iteration }}</strong>
+                                    </td>
+                                    <td><i class="align-middle fab fa-angular fa-lg text-danger me-3"></i>
+                                        <strong>
+                                            {{ $link->title }}
+                                        </strong>
+                                    </td>
+                                    <td style="max-width: 200px; direction: ltr; overflow: hidden">
+                                        <a href="{{ $link->main_link }}" target="_blank" data-bs-toggle="tooltip"
+                                            data-bs-offset="0,4" data-bs-placement="bottom"
+                                            data-bs-custom-class="tooltip-success"
+                                            data-bs-original-title="{{ $link->main_link }}" rel="noopener noreferrer">
+                                            {{ $link->main_link }}
+                                        </a>
+                                    </td>
+                                    <td style="direction: ltr; overflow: hidden">
+                                        <a href="{{ $link->short_link }}" target="_blank" data-bs-toggle="tooltip"
+                                            data-bs-offset="0,4" data-bs-placement="bottom"
+                                            data-bs-custom-class="tooltip-success"
+                                            data-bs-original-title="{{ $link->short_link }}" rel="noopener noreferrer">
+                                            {{ $link->short_link }}
+                                        </a>
+                                    </td>
+                                    <td><span class="badge bg-label-primary me-1">{{ $link->view }}</span></td>
+                                    <td><span
+                                            class="badge bg-label-primary me-1">{{ jdate($link->created_at)->format('%d %B %Y') }}</span>
+                                    </td>
+                                    <td>
+                                        <label class="me-3 switch switch-primary">
+                                            <input type="checkbox" class="switch-input"
+                                                {{ $link->is_active ? 'checked' : '' }}>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on">
+                                                    <i class="bx bx-check"></i>
+                                                </span>
+                                                <span class="switch-off">
+                                                    <i class="bx bx-x"></i>
+                                                </span>
+                                            </span>
+                                            <span class="switch-label"></span>
+                                        </label>
+
+                                    </td>
+                                    <td>
+
+                                        <button type="button" value="{{ $link->id }}"
+                                            class="btn btn-icon btn-label-warning">
+                                            <span class="tf-icons bx bx-edit"></span>
+                                        </button>
+
+                                        <button type="button" value="{{ $link->id }}"
+                                            class="btn btn-icon btn-label-danger">
+                                            <span class="tf-icons bx bx-trash"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="mb-0">
@@ -64,6 +154,9 @@ Div: container-xxl flex-grow-1 container-p-y
                 </div>
             @endif
         </div>
+
+
+
         <div class="table-responsive text-nowrap">
             <table class="table table-hover table-striped" style="margin-bottom: 20px">
                 <thead class="table-dark">
@@ -98,7 +191,8 @@ Div: container-xxl flex-grow-1 container-p-y
                             </td>
                             <td style="direction: ltr; overflow: hidden">
                                 <a href="{{ $link->short_link }}" target="_blank" data-bs-toggle="tooltip"
-                                    data-bs-offset="0,4" data-bs-placement="bottom" data-bs-custom-class="tooltip-success"
+                                    data-bs-offset="0,4" data-bs-placement="bottom"
+                                    data-bs-custom-class="tooltip-success"
                                     data-bs-original-title="{{ $link->short_link }}" rel="noopener noreferrer">
                                     {{ $link->short_link }}
                                 </a>
@@ -124,11 +218,13 @@ Div: container-xxl flex-grow-1 container-p-y
                             </td>
                             <td>
 
-                                <button type="button" value="{{ $link->id }}" class="btn btn-icon btn-label-warning">
+                                <button type="button" value="{{ $link->id }}"
+                                    class="btn btn-icon btn-label-warning">
                                     <span class="tf-icons bx bx-edit"></span>
                                 </button>
 
-                                <button type="button" value="{{ $link->id }}" class="btn btn-icon btn-label-danger">
+                                <button type="button" value="{{ $link->id }}"
+                                    class="btn btn-icon btn-label-danger">
                                     <span class="tf-icons bx bx-trash"></span>
                                 </button>
                             </td>
@@ -141,10 +237,12 @@ Div: container-xxl flex-grow-1 container-p-y
 
 
         <!-- Offcanvas to add new user -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddLink" aria-labelledby="offcanvasAddLinkLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddLink"
+            aria-labelledby="offcanvasAddLinkLabel">
             <div class="offcanvas-header border-bottom">
                 <h6 id="offcanvasAddLinkLabel" class="offcanvas-title">افزودن لینک</h6>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
                 <form action="{{ route('link.store') }}" method="POST" class="add-new-user pt-0" id="addNewUserForm">
@@ -152,26 +250,68 @@ Div: container-xxl flex-grow-1 container-p-y
                     <div class="mb-3">
                         <label class="form-label" for="add-link-title">عنوان </label>
                         <input type="text" class="form-control" id="add-link-title"
-                            placeholder="یک عنوان مناسب وارد کنید" name="linkTitle" aria-label="John Doe">
+                            placeholder="یک عنوان مناسب وارد کنید" name="linkTitle" value="{{ old('linkTitle') }}">
+                        @error('linkTitle')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-link-main">لینک اصلی</label>
                         <input type="text" id="add-link-main" class="form-control text-end"
-                            placeholder="http://www.yoururl.com/..." aria-label="" name="mainLink" dir="ltr">
+                            placeholder="http://www.yoururl.com/..." value="{{ old('mainLink') }}" name="mainLink"
+                            dir="ltr">
+                        @error('mainLink')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
+
+
+
+
+
                         <label class="form-label" for="add-short-link">لینک کوتاه</label>
-                        <input type="text" id="add-short-link" class="form-control text-end"
-                            placeholder="Shortlink.link/123" aria-label="" name="shortLink" dir="ltr">
+
+                        <div class="input-group input-group-merge">
+                            <input type="text" id="add-short-link" class="form-control text-end" placeholder="123"
+                                name="shortLink" value="{{ old('shortLink') }}" dir="ltr">
+                            <span class="input-group-text" id="" dir="ltr">{{ config('app.url') }}/</span>
+                        </div>
+                        @error('shortLink')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
-                    <div class="mb-4">
+                    {{-- <div class="mb-4">
                         <label class="form-label" for="user-plan">وضعیت </label>
-                        <select id="user-plan" class="form-select" name="isActive">
-                            <option value="1">فعال</option>
-                            <option value="0">غیرفعال</option>
+                        <select id="user-plan" class="form-select" name="isActive" required>
+                            <option value="1" {{ old('isActive') == 1 ? 'selected' : '' }}>فعال</option>
+                            <option value="0" {{ old('isActive') == 0 ? 'selected' : '' }}>غیرفعال</option>
                         </select>
+                    </div> --}}
+
+                    <div class="mb-4">
+                        <label class="form-label" for="user-plan">وضعیت *</label>
+                        <select id="user-plan" class="form-select @error('isActive') is-invalid @enderror"
+                            name="isActive">
+                            <option value="">-- لطفا انتخاب کنید --</option>
+                            <option value="1" {{ old('isActive') == '1' ? 'selected' : '' }}>فعال</option>
+                            <option value="0" {{ old('isActive') == '0' ? 'selected' : '' }}>غیرفعال</option>
+                        </select>
+                        @error('isActive')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
+
+
                     {{-- <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">ثبت</button> --}}
                     <input type="submit" value="ثبت" class="btn btn-primary me-sm-3 me-1 data-submit">
                     <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">انصراف</button>
