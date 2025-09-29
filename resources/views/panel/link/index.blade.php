@@ -54,195 +54,108 @@ Div: container-xxl flex-grow-1 container-p-y
         </div>
 
         <div class="card-body">
-            <div>
-                <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
-                    <i class="bx bx-xs bx-store me-2"></i>
-                    این یک هشدار خطر قابل رد کردن است - بررسی کنید!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="table-responsive text-nowrap">
-                    <table class="table table-hover table-striped" style="margin-bottom: 20px">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>#</th>
-                                <th>عنوان</th>
-                                <th>لینک اصلی</th>
-                                <th>لینک کوتاه</th>
-                                <th style="width: 10%">تعداد بازدید</th>
-                                <th style="width: 12%"> تاریخ ایجاد </th>
-                                <th style="width: 10%">وضعیت</th>
-                                <th style="width: 10%">عمل‌ها</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-border-bottom-0">
-                            @foreach ($allLinks as $link)
-                                <tr>
-                                    <td><i class="align-middle fab fa-angular fa-lg text-danger "></i>
-                                        <strong>{{ $loop->iteration }}</strong>
-                                    </td>
-                                    <td><i class="align-middle fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>
-                                            {{ $link->title }}
-                                        </strong>
-                                    </td>
-                                    <td style="max-width: 200px; direction: ltr; overflow: hidden">
-                                        <a href="{{ $link->main_link }}" target="_blank" data-bs-toggle="tooltip"
-                                            data-bs-offset="0,4" data-bs-placement="bottom"
-                                            data-bs-custom-class="tooltip-success"
-                                            data-bs-original-title="{{ $link->main_link }}" rel="noopener noreferrer">
-                                            {{ $link->main_link }}
-                                        </a>
-                                    </td>
-                                    <td style="direction: ltr; overflow: hidden">
-                                        <a href="{{ $link->short_link }}" target="_blank" data-bs-toggle="tooltip"
-                                            data-bs-offset="0,4" data-bs-placement="bottom"
-                                            data-bs-custom-class="tooltip-success"
-                                            data-bs-original-title="{{ $link->short_link }}" rel="noopener noreferrer">
-                                            {{ $link->short_link }}
-                                        </a>
-                                    </td>
-                                    <td><span class="badge bg-label-primary me-1">{{ $link->view }}</span></td>
-                                    <td><span
-                                            class="badge bg-label-primary me-1">{{ jdate($link->created_at)->format('%d %B %Y') }}</span>
-                                    </td>
-                                    <td>
-                                        <label class="me-3 switch switch-primary">
-                                            <input type="checkbox" class="switch-input"
-                                                {{ $link->is_active ? 'checked' : '' }}>
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on">
-                                                    <i class="bx bx-check"></i>
-                                                </span>
-                                                <span class="switch-off">
-                                                    <i class="bx bx-x"></i>
-                                                </span>
-                                            </span>
-                                            <span class="switch-label"></span>
-                                        </label>
-
-                                    </td>
-                                    <td>
-
-                                        <button type="button" value="{{ $link->id }}"
-                                            class="btn btn-icon btn-label-warning">
-                                            <span class="tf-icons bx bx-edit"></span>
-                                        </button>
-
-                                        <button type="button" value="{{ $link->id }}"
-                                            class="btn btn-icon btn-label-danger">
-                                            <span class="tf-icons bx bx-trash"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-
-
             @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="mb-0">
+                <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+                    <i class="bx bx-alert-triangle bx-beat " /></i>
+                    <ul class="mb-0"">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-        </div>
 
-
-
-        <div class="table-responsive text-nowrap">
-            <table class="table table-hover table-striped" style="margin-bottom: 20px">
-                <thead class="table-dark">
-                    <tr>
-                        <th>#</th>
-                        <th>عنوان</th>
-                        <th>لینک اصلی</th>
-                        <th>لینک کوتاه</th>
-                        <th style="width: 10%">تعداد بازدید</th>
-                        <th style="width: 12%"> تاریخ ایجاد </th>
-                        <th style="width: 10%">وضعیت</th>
-                        <th style="width: 10%">عمل‌ها</th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                    @foreach ($allLinks as $link)
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover table-striped" style="margin-bottom: 20px">
+                    <thead class="table-dark">
                         <tr>
-                            <td><i class="align-middle fab fa-angular fa-lg text-danger "></i>
-                                <strong>{{ $loop->iteration }}</strong>
-                            </td>
-                            <td><i class="align-middle fab fa-angular fa-lg text-danger me-3"></i>
-                                <strong>
-                                    {{ $link->title }}
-                                </strong>
-                            </td>
-                            <td style="max-width: 200px; direction: ltr; overflow: hidden">
-                                <a href="{{ $link->main_link }}" target="_blank" data-bs-toggle="tooltip"
-                                    data-bs-offset="0,4" data-bs-placement="bottom" data-bs-custom-class="tooltip-success"
-                                    data-bs-original-title="{{ $link->main_link }}" rel="noopener noreferrer">
-                                    {{ $link->main_link }}
-                                </a>
-                            </td>
-                            <td style="direction: ltr; overflow: hidden">
-                                <a href="{{ $link->short_link }}" target="_blank" data-bs-toggle="tooltip"
-                                    data-bs-offset="0,4" data-bs-placement="bottom"
-                                    data-bs-custom-class="tooltip-success"
-                                    data-bs-original-title="{{ $link->short_link }}" rel="noopener noreferrer">
-                                    {{ $link->short_link }}
-                                </a>
-                            </td>
-                            <td><span class="badge bg-label-primary me-1">{{ $link->view }}</span></td>
-                            <td><span
-                                    class="badge bg-label-primary me-1">{{ jdate($link->created_at)->format('%d %B %Y') }}</span>
-                            </td>
-                            <td>
-                                <label class="me-3 switch switch-primary">
-                                    <input type="checkbox" class="switch-input" {{ $link->is_active ? 'checked' : '' }}>
-                                    <span class="switch-toggle-slider">
-                                        <span class="switch-on">
-                                            <i class="bx bx-check"></i>
-                                        </span>
-                                        <span class="switch-off">
-                                            <i class="bx bx-x"></i>
-                                        </span>
-                                    </span>
-                                    <span class="switch-label"></span>
-                                </label>
-
-                            </td>
-                            <td>
-
-                                <button type="button" value="{{ $link->id }}"
-                                    class="btn btn-icon btn-label-warning">
-                                    <span class="tf-icons bx bx-edit"></span>
-                                </button>
-
-                                <button type="button" value="{{ $link->id }}"
-                                    class="btn btn-icon btn-label-danger">
-                                    <span class="tf-icons bx bx-trash"></span>
-                                </button>
-                            </td>
+                            <th>#</th>
+                            <th>عنوان</th>
+                            <th>لینک اصلی</th>
+                            <th>لینک کوتاه</th>
+                            <th style="width: 10%">تعداد بازدید</th>
+                            <th style="width: 12%"> تاریخ ایجاد </th>
+                            <th style="width: 10%">وضعیت</th>
+                            <th style="width: 10%">عمل‌ها</th>
                         </tr>
-                    @endforeach
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach ($allLinks as $link)
+                            <tr>
+                                <td><i class="align-middle fab fa-angular fa-lg text-danger "></i>
+                                    <strong>{{ $loop->iteration }}</strong>
+                                </td>
+                                <td><i class="align-middle fab fa-angular fa-lg text-danger me-3"></i>
+                                    <strong>
+                                        {{ $link->title }}
+                                    </strong>
+                                </td>
+                                <td style="max-width: 200px; direction: ltr; overflow: hidden">
+                                    <a href="{{ $link->main_link }}" target="_blank" data-bs-toggle="tooltip"
+                                        data-bs-offset="0,4" data-bs-placement="bottom"
+                                        data-bs-custom-class="tooltip-success"
+                                        data-bs-original-title="{{ $link->main_link }}" rel="noopener noreferrer">
+                                        {{ $link->main_link }}
+                                    </a>
+                                </td>
+                                <td style="direction: ltr; overflow: hidden">
+                                    <a href="{{ $link->short_link }}" target="_blank" data-bs-toggle="tooltip"
+                                        data-bs-offset="0,4" data-bs-placement="bottom"
+                                        data-bs-custom-class="tooltip-success"
+                                        data-bs-original-title="{{ $link->short_link }}" rel="noopener noreferrer">
+                                        {{ $link->short_link }}
+                                    </a>
+                                </td>
+                                <td><span class="badge bg-label-primary me-1">{{ $link->view }}</span></td>
+                                <td><span
+                                        class="badge bg-label-primary me-1">{{ jdate($link->created_at)->format('%d %B %Y') }}</span>
+                                </td>
+                                <td>
+                                    <label class="me-3 switch switch-primary">
+                                        <input type="checkbox" class="switch-input"
+                                            {{ $link->is_active ? 'checked' : '' }}>
+                                        <span class="switch-toggle-slider">
+                                            <span class="switch-on">
+                                                <i class="bx bx-check"></i>
+                                            </span>
+                                            <span class="switch-off">
+                                                <i class="bx bx-x"></i>
+                                            </span>
+                                        </span>
+                                        <span class="switch-label"></span>
+                                    </label>
 
-                </tbody>
-            </table>
+                                </td>
+                                <td>
+
+                                    <button type="button" value="{{ $link->id }}"
+                                        class="btn btn-icon btn-label-warning">
+                                        <span class="tf-icons bx bx-edit"></span>
+                                    </button>
+
+                                    <button type="button" value="{{ $link->id }}"
+                                        class="btn btn-icon btn-label-danger">
+                                        <span class="tf-icons bx bx-trash"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
         </div>
+        {{-- .card-body --}}
+
+
 
 
         <!-- Offcanvas to add new user -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddLink"
-            aria-labelledby="offcanvasAddLinkLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddLink" aria-labelledby="offcanvasAddLinkLabel">
             <div class="offcanvas-header border-bottom">
                 <h6 id="offcanvasAddLinkLabel" class="offcanvas-title">افزودن لینک</h6>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
                 <form action="{{ route('link.store') }}" method="POST" class="add-new-user pt-0" id="addNewUserForm">

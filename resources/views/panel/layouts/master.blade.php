@@ -16,6 +16,7 @@
     {{-- <link rel="icon" type="image/x-icon" href="{{ asset('/panel/img/favicon/favicon.ico') }}"> --}}
 
     <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="{{ asset('/panel/vendor/fonts/boxicons-v3/boxicons.css') }}">
     <link rel="stylesheet" href="{{ asset('/panel/vendor/fonts/boxicons.css') }}">
     <!-- <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" /> -->
     <!-- <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" /> -->
