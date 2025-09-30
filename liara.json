@@ -1,17 +1,17 @@
 {
-  "app": "shortener-link",
-  "port": 3000,
-  "build": {
-    "location": "iran"
-  },
-  "disks": []
- "laravel":{
-    "phpVersion": "8.3",
-    "mirror": true,
-    "timezone": "Asia/Tehran",
-    "installDevDependencies": true,
-    "configCache": true,
-    "routeCache": true,
-    "buildAssets": true,
-}
+    "app": "shortener-link",
+    "port": 3000,
+    "build": {
+        "location": "iran"
+    },
+    "disks": [],
+    "laravel": {
+        "phpVersion": "8.3",
+        "mirror": true,
+        "timezone": "Asia/Tehran",
+        "installDevDependencies": true,
+        "configCache": true,
+        "routeCache": true,
+        "buildAssets": true
+    }
 }
