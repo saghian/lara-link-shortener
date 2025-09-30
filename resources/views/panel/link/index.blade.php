@@ -151,7 +151,7 @@ Div: container-xxl flex-grow-1 container-p-y
 
 
 
-        <!-- Offcanvas to add new user -->
+        <!-- Offcanvas to add new link -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddLink" aria-labelledby="offcanvasAddLinkLabel">
             <div class="offcanvas-header border-bottom">
                 <h6 id="offcanvasAddLinkLabel" class="offcanvas-title">افزودن لینک</h6>
@@ -183,16 +183,13 @@ Div: container-xxl flex-grow-1 container-p-y
                     </div>
                     <div class="mb-3">
 
-
-
-
-
                         <label class="form-label" for="add-short-link">لینک کوتاه</label>
 
                         <div class="input-group input-group-merge">
-                            <input type="text" id="add-short-link" class="form-control text-end" placeholder="123"
+                            <input type="text" id="add-short-link" class="form-control text-end " placeholder="123"
                                 name="shortLink" value="{{ old('shortLink') }}" dir="ltr">
-                            <span class="input-group-text" id="" dir="ltr">{{ config('app.url') }}/</span>
+                            <span class="input-group-text " style="opacity: 0.5; " id=""
+                                dir="ltr">{{ config('app.url') }}/</span>
                         </div>
                         @error('shortLink')
                             <div class="invalid-feedback d-block">
