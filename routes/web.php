@@ -5,14 +5,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('/console')->group(function () {
+Route::prefix('/console')->middleware(['auth'])->group(function () {
     // Test Route
     Route::get('/', function () {
         // return view('dashboard.dashboard');

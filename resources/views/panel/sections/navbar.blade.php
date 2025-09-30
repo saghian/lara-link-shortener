@@ -68,10 +68,21 @@
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
-                                <i class="bx bx-power-off me-2"></i>
-                                <span class="align-middle">خروج</span>
-                            </a>
+
+                            <span class="dropdown-item">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                        
+                                        this.closest('form').submit();">
+                                        <i class="bx bx-power-off me-2"></i>
+                                        <span class="align-middle">خروج</span>
+                                    </x-dropdown-link>
+                                </form>
+                            </span>
+
                         </li>
                     </ul>
                 </li>

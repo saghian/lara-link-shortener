@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('console.index', absolute: false));
     }
 
     /**
@@ -43,5 +43,13 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    /**
+     * Get the post login redirect path.
+     */
+    protected function redirectTo(): string
+    {
+        return '/console'; // مسیر مورد نظر خود را قرار دهید
     }
 }
