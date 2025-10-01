@@ -11,8 +11,6 @@
       "webroot": "public",
       "commands": [
         "composer install --no-dev --optimize-autoloader",
-        "php artisan optimize:clear",
-        "php artisan migrate --force",
         "php artisan storage:link",
         "php artisan config:cache",
         "php artisan route:cache",
@@ -23,15 +21,7 @@
   "disks": [
     {
       "name": "storage",
-      "mountTo": "/storage",
-      "localPath": "./storage/app",
-      "serverPath": "/storage/app"
-    },
-    {
-      "name": "framework",
-      "mountTo": "/framework",
-      "localPath": "./storage/framework",
-      "serverPath": "/storage/framework"
+      "mountTo": "/storage"
     }
   ]
 }
