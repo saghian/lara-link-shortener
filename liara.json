@@ -23,11 +23,13 @@
   "disks": [
     {
       "name": "storage",
+      "mountTo": "/storage",
       "localPath": "./storage/app",
       "serverPath": "/storage/app"
     },
     {
       "name": "framework",
+      "mountTo": "/framework",
       "localPath": "./storage/framework",
       "serverPath": "/storage/framework"
     }
