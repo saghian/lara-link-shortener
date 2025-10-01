@@ -1,11 +1,21 @@
 {
-    "laravel":{
-        "phpVersion": "8.3",
-        "mirror": true,
-        "timezone": "Asia/Tehran",
-        "installDevDependencies": true,
-        "configCache": true,
-        "routeCache": true,
-        "buildAssets": false
+  "platform": "php",
+  "app": "shortener-link",
+  "build": {
+    "location": "iran"
+  },
+  "deploy": {
+    "type": "laravel",
+    "config": {
+      "php": "8.3",
+      "webroot": "public"
     }
+  },
+  "disks": [
+    {
+      "name": "storage",
+      "localPath": "./storage/app",
+      "serverPath": "/storage/app"
+    }
+  ]
 }
