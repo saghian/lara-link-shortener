@@ -1,13 +1,13 @@
 {
-    "laravel":{
-        "phpVersion": "8.3",
-        "mirror": true,
-        "timezone": "America/Los_Angeles",
-        "installDevDependencies": true,
-        "configCache": true,
-        "routeCache": true,
-        "buildAssets": true,
-        "composerMirror": false
+  "platform": "php",
+  "app": "shortener-link",
+  "build": {
+    "location": "iran"
+  },
+  "deploy": {
+    "config": {
+      "php": "8.3",
+      "webroot": "public"
     }
+  }
 }
-
