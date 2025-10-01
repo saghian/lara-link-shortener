@@ -6,7 +6,7 @@
             </span>
             {{-- <span class="app-brand-text demo menu-text fw-bold ms-2">وبلاگ</span> --}}
 
-            <img class="app-brand-text demo menu-text fw-bold ms-2" src="{{ asset('/panel/img/logo/logo.png') }}"
+            <img class="app-brand-text demo menu-text fw-bold ms-2" src="{{ asset('/panel/img/logo/logo-banner.png') }}"
                 width="150x">
         </a>
 
