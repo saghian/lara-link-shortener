@@ -2,14 +2,9 @@
   "platform": "php",
   "app": "shortener-link",
   "build": {
-    "location": "iran",
-    "type": "php",
-    "config": {
-      "php": "8.2"
-    }
+    "location": "iran"
   },
   "deploy": {
-    "type": "laravel",
     "config": {
       "php": "8.2",
       "webroot": "public"
