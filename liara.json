@@ -6,6 +6,8 @@
         "installDevDependencies": true,
         "configCache": true,
         "routeCache": true,
-        "buildAssets": true
+        "buildAssets": true,
+        "composerMirror": false
     }
 }
+
