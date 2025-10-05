@@ -45,4 +45,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // روابط
+    public function links()
+    {
+        return $this->hasMany(Link::class);
+    }
+
+    public function clickLogs()
+    {
+        return $this->hasManyThrough(ClickLog::class, Link::class);
+    }
+
+    public function dailyStats()
+    {
+        return $this->hasManyThrough(LinkVisitsDaily::class, Link::class);
+    }
 }

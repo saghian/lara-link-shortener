@@ -57,7 +57,8 @@
                 <div class="flex items-center space-x-3">
                     <div
                         class="w-10 h-10 bg-gradient-to-r from-slate-50 to-fuchsia-50 rounded-lg flex items-center justify-center shadow">
-                        <img src="{{ asset('/panel/img/logo/icon.png') }}" alt="">
+                        <a href="{{ env('APP_URL') }}"><img src="{{ asset('/panel/img/logo/icon.png') }}"
+                                alt=""></a>
                     </div>
                     <span class="text-white text-lg font-bold">Lara Link Shortener</span>
                 </div>

@@ -32,7 +32,7 @@ Div: container-xxl flex-grow-1 container-p-y
                     class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
                     <div class="dt-buttons btn-group flex-wrap">
 
-                        <button type="button" class="btn btn-label-success px-2">
+                        <button type="button" class="btn btn-label-success px-2 " disabled>
                             <span class="tf-icons bx bx-save me-1"></span>
                             خروجی اکسل
                         </button>
@@ -100,14 +100,15 @@ Div: container-xxl flex-grow-1 container-p-y
                                     </a>
                                 </td>
                                 <td style="direction: ltr; overflow: hidden">
-                                    <a href="{{ $link->short_link }}" target="_blank" data-bs-toggle="tooltip"
-                                        data-bs-offset="0,4" data-bs-placement="bottom"
+                                    <a href="{{ config('app.url') . $link->short_link }}" target="_blank"
+                                        data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom"
                                         data-bs-custom-class="tooltip-success"
-                                        data-bs-original-title="{{ $link->short_link }}" rel="noopener noreferrer">
+                                        data-bs-original-title="{{ config('app.url') . $link->short_link }}"
+                                        rel="noopener noreferrer">
                                         {{ $link->short_link }}
                                     </a>
                                 </td>
-                                <td><span class="badge bg-label-primary me-1">{{ $link->view }}</span></td>
+                                <td><span class="badge bg-label-primary me-1">{{ $link->click_count }}</span></td>
                                 <td><span
                                         class="badge bg-label-primary me-1">{{ jdate($link->created_at)->format('%d %B %Y') }}</span>
                                 </td>
@@ -189,7 +190,7 @@ Div: container-xxl flex-grow-1 container-p-y
                             <input type="text" id="add-short-link" class="form-control text-end " placeholder="123"
                                 name="shortLink" value="{{ old('shortLink') }}" dir="ltr">
                             <span class="input-group-text " style="opacity: 0.5; " id=""
-                                dir="ltr">{{ config('app.url') }}/</span>
+                                dir="ltr">{{ config('app.url') }}</span>
                         </div>
                         @error('shortLink')
                             <div class="invalid-feedback d-block">
@@ -233,13 +234,6 @@ Div: container-xxl flex-grow-1 container-p-y
 
     <hr class="my-5">
 
-
-    <div class="card mb-4">
-        <h5 class="card-header heading-color"> عنوان ...</h5>
-        <div class="card-body">
-            متن ...
-        </div>
-    </div>
 @endsection
 
 

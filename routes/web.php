@@ -32,4 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// مسیر catch-all برای لینک‌های کوتاه - باید در انتها قرار گیرد
+Route::get('/{shortLink}', [LinkController::class, 'redirect'])
+    ->where('shortLink', '^(?!console|auth|login|register|report|profile).+$')
+    ->name('redirect');
+
+
 require __DIR__ . '/auth.php';
