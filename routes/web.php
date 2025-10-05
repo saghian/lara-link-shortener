@@ -4,6 +4,42 @@ use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
+// Routeهای تست موقعیت‌یابی (فقط برای محیط توسعه)
+Route::get('/test-geoip', function () {
+    $geoService = app(App\Services\GeoLocationService::class);
+
+    $ip = request()->ip() || '8.8.8.8';
+    $result = $geoService->getLocationFromIP($ip);
+    $dbInfo = $geoService->getDatabaseInfo();
+
+    return response()->json([
+        'ip' => $ip,
+        'location' => $result,
+        'database_info' => $dbInfo,
+        'available_ips_for_test' => [
+            '8.8.8.8' => 'گوگل (آمریکا)',
+            '5.202.207.10' => 'ایران',
+            '185.143.233.10' => 'آلمان',
+            '103.86.99.100' => 'هنگ کنگ',
+        ]
+    ]);
+});
+
+Route::get('/test-geoip/{ip}', function ($ip) {
+    $geoService = app(App\Services\GeoLocationService::class);
+    $result = $geoService->getLocationFromIP($ip);
+    $dbInfo = $geoService->getDatabaseInfo();
+
+    return response()->json([
+        'ip' => $ip,
+        'location' => $result,
+        'database_info' => $dbInfo
+    ]);
+});
+
+
+
 Route::get('/', function () {
     return view('home.index');
 });
@@ -37,6 +73,18 @@ Route::middleware('auth')->group(function () {
 Route::get('/{shortLink}', [LinkController::class, 'redirect'])
     ->where('shortLink', '^(?!console|auth|login|register|report|profile).+$')
     ->name('redirect');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 require __DIR__ . '/auth.php';

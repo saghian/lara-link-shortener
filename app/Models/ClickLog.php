@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\GeoLocationService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -108,12 +109,39 @@ class ClickLog extends Model
 
     public static function getLocationData($ipAddress)
     {
-        // اگر IP لوکال هست، مقدار null برگردان
-        if ($ipAddress === '127.0.0.1' || $ipAddress === '::1') {
-            return ['country' => 'Local', 'city' => 'Local'];
-        }
 
-        // استفاده از دیتابیس آفلاین
-        return self::getLocationFromIP($ipAddress);
+        // // استفاده از دیتابیس آفلاین
+        // return self::getLocationFromIP($ipAddress);
+
+
+
+        try {
+            $geoService = app(GeoLocationService::class);
+            $location = $geoService->getLocationFromIP($ipAddress);
+
+
+            // اگر IP لوکال هست، مقدار null برگردان
+            if ($ipAddress === '127.0.0.1' || $ipAddress === '::1') {
+                return ['country' => 'Local', 'city' => 'Local'];
+            }
+
+            // اگر موقعیت‌یابی موفق نبود، مقادیر پیش‌فرض فارسی برگردان
+            if (!$location['success']) {
+                return [
+                    'country' => 'نامشخص',
+                    'city' => 'نامشخص'
+                ];
+            }
+
+            return [
+                'country' => $location['country'],
+                'city' => $location['city']
+            ];
+        } catch (\Exception $e) {
+            return [
+                'country' => 'نامشخص',
+                'city' => 'نامشخص'
+            ];
+        }
     }
 }

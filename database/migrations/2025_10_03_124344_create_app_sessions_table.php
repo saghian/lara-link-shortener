@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('session_id', 255)->unique();
             $table->string('ip_address', 45);
             $table->text('user_agent');
-            // $table->foreignId('country_id')->nullable()->constrained()->onDelete('set null');
+            $table->string('country', 100)->nullable();
+            $table->string('city', 100)->nullable();
             $table->timestamp('first_visit_at');
             $table->timestamp('last_activity_at');
             $table->integer('page_views')->default(1);

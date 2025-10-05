@@ -100,10 +100,10 @@ Div: container-xxl flex-grow-1 container-p-y
                                     </a>
                                 </td>
                                 <td style="direction: ltr; overflow: hidden">
-                                    <a href="{{ config('app.url') . $link->short_link }}" target="_blank"
+                                    <a href="{{ config('app.url') . '/' . $link->short_link }}" target="_blank"
                                         data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom"
                                         data-bs-custom-class="tooltip-success"
-                                        data-bs-original-title="{{ config('app.url') . $link->short_link }}"
+                                        data-bs-original-title="{{ config('app.url') . '/' . $link->short_link }}"
                                         rel="noopener noreferrer">
                                         {{ $link->short_link }}
                                     </a>

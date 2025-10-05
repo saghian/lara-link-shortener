@@ -18,7 +18,7 @@ class LinkController extends Controller
     public function index()
     {
 
-        $allLinks = Link::all();
+        $allLinks = Link::all()->sortDesc();
         return view('panel.link.index', compact('allLinks'));
     }
 
@@ -48,7 +48,6 @@ class LinkController extends Controller
             'main_link' => $validated['mainLink'],
             'short_link' => $validated['shortLink'],
             'is_active' => $validated['isActive'] ?? false,
-            'view' => '0'
         ];
 
         $link = Link::create($linkData);
